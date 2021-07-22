@@ -1,0 +1,22 @@
+{
+  "name": "ecommerce",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "amazon-product-api": "^0.4.4",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.10",
+    "react": "^17.0.2",
+    "react-animate-css": "0.0.1",
+    "react-dom": "^17.0.2",
+    "react-materialize": "^1.0.10",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.1.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
