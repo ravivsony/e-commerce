@@ -4,7 +4,7 @@ import "./index.css";
 import CART from "../CartData";
 
 const CartProducts = () => {
-  const [addInCart] = useState([]);
+  const [addInCart, setAddInCart] = useState([]);
 
   if (!addInCart) {
   }
