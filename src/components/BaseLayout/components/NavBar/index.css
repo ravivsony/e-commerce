@@ -14,7 +14,7 @@
   margin: 0;
   height: 3em;
   align-items: center;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 .navbar li a {
@@ -25,7 +25,20 @@
 }
 
 .navbar li a:hover {
+  text-decoration: none;
+
   background: transparent;
   color: black;
-  transition: 0.5s;
+  transition: 0.3s;
+}
+.cartIcon {
+  font-size: 1.2rem;
+}
+.cartIcon:hover {
+  text-decoration: none;
+
+  background: transparent;
+  color: rgb(100, 96, 96);
+  transition: 0.3s;
+  font-size: 1.3rem;
 }

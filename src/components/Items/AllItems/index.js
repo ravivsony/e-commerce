@@ -1,10 +1,11 @@
 //Dependencies
 import React from "react";
-import { Icon } from "react-materialize";
+import { FaCartPlus } from "react-icons/fa";
 import map from "lodash/map";
 //Internals
 import PRODUCTS from "../../Data";
 import CART from "../../CartData";
+import "../index.css";
 
 const getCart = (product) => {
   CART.push(product);
@@ -25,9 +26,7 @@ const AllItems = () => (
         <div className="price-add">
           <h5 id="product-price">${product.price}</h5>
           <div onClick={() => getCart(product)}>
-            <Icon small id="add-icon">
-              add_shopping_cart
-            </Icon>
+            <FaCartPlus id="add-icon" style={{ fontSize: "x-large" }} />
           </div>
         </div>
       </div>

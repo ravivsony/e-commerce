@@ -5,11 +5,11 @@
 .item {
   height: 30em;
   width: 20em;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  margin: .5em;
+  margin: 0.5em;
   padding: 1em;
   background-color: white;
   transition: transform 300ms bounce;
@@ -39,13 +39,13 @@ img {
   border-top: 1px solid lightgrey;
   padding: 1em 0 0;
   font-size: 1.5em;
-  font-family: 'Lato', sans-serif;
-  margin: .5em 0;
+  font-family: "Lato", sans-serif;
+  margin: 0.5em 0;
 }
 
 #product-description {
   font-size: 1em;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   color: grey;
   font-weight: lighter;
   margin: 0;
@@ -73,8 +73,16 @@ i:hover {
 
 .items-title {
   margin: 3em 0;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: lighter;
   color: rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
+}
+#add-icon:hover {
+  text-decoration: none;
+
+  background: transparent;
+  color: rgb(90, 89, 89);
+
+  transition: 0.3s;
 }

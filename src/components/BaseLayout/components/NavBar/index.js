@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon } from "react-materialize";
+import { FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import "./index.css";
 
@@ -26,7 +26,7 @@ const Navbar = () => (
     </div>
     <div className="shopping-cart">
       <NavLink to="/cart">
-        <Icon medium>shopping_cart</Icon>
+        <FaShoppingCart className="cartIcon" />
       </NavLink>
     </div>
   </nav>
