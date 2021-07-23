@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "../Data";
 import "./index.css";
+// import { FaTrash } from "react-icons/fa";
 import CART from "../CartData";
 
 const CartProducts = () => {
   const [addInCart, setAddInCart] = useState([]);
 
-  if (!addInCart) {
-  }
+  // if (!addInCart) {
+  // }
 
   return (
     <div>
@@ -27,6 +28,7 @@ const CartProducts = () => {
               <div className="price-add">
                 <h5 id="product-price">${product.price}</h5>
               </div>
+              <br />
             </div>
           );
         })}
