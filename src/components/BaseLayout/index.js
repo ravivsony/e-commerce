@@ -14,16 +14,22 @@ import Clothes from "../Clothes";
 const BaseLayout = () => {
   const [index, setIndex] = useState(0);
   const classNames = ["first-header", "second-header", "third-header"];
-  const [className, setClassName] = useState(classNames);
+  const [className, setClassName] = useState(classNames[index]);
 
   let latestIndex = () => {
     setIndex(index + 1);
   };
 
   useEffect(() => {
-    setInterval(latestIndex, 3000);
+    const timer = setInterval(latestIndex, 3000);
     setClassName(classNames[index]);
-  }, []);
+    if (index > 2) {
+      setIndex(0);
+      setClassName(classNames[index]);
+    }
+
+    return () => clearInterval(timer);
+  });
 
   return (
     <div>
