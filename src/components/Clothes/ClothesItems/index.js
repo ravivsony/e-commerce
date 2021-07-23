@@ -1,7 +1,6 @@
 //Dependencies
 import React from "react";
-import { Icon } from "react-materialize";
-import CartProducts from "../../Cart";
+import { FaCartPlus } from "react-icons/fa";
 //Internals
 import PRODUCTS from "../../Data";
 
@@ -20,9 +19,7 @@ const ClothesItems = () => (
             </div>
             <div className="price-add">
               <h5 id="product-price">${product.price}</h5>
-              <Icon small onClick={() => <CartProducts />} id="add-icon">
-                add_shopping_cart
-              </Icon>
+              <FaCartPlus id="add-icon" style={{ fontSize: "x-large" }} />
             </div>
           </div>
         );
