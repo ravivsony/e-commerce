@@ -1,12 +1,10 @@
 //Dependencies
 import React from "react";
 import { FaCartPlus } from "react-icons/fa";
-//Internals
-import PRODUCTS from "../../Data";
 
-const WomenItems = () => (
+const WomenItems = ({products}) => (
   <div className="items">
-    {PRODUCTS.map((product) => {
+    {products && products.map((product) => {
       if (product.gender === "women") {
         return (
           <div className="item">
@@ -16,10 +14,10 @@ const WomenItems = () => (
             <div className="product-details">
               <h1 id="product-name">{product.name}</h1>
               <h4 id="product-description">{product.description}</h4>
-              <h5 id="product-size">size: {product.size}</h5>
+              <h5 id="product-size">Size: {product.size}</h5>
             </div>
             <div className="price-add">
-              <h5 id="product-price">${product.price}</h5>
+              <h5 id="product-price">&#x20B9;{product.price}</h5>
               <FaCartPlus id="add-icon" style={{ fontSize: "x-large" }} />
             </div>
           </div>

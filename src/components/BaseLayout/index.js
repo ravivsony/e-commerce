@@ -40,6 +40,13 @@ const BaseLayout = () => {
   const classNames = ["first-header", "second-header", "third-header"];
   const [className, setClassName] = useState(classNames[index]);
   const [data, setData] = useState([]);
+  const[selectedFilter,setSelectedFilter]=useState('')
+  const[selectedOption,setSelectedOption]=useState({
+    size: '',
+    price: '',
+    gender: '',
+    color: '',
+  });
 
   let latestIndex = () => {
     setIndex(index + 1);
@@ -59,27 +66,33 @@ const BaseLayout = () => {
   }, [])
   
   const filterItems=(filterFor)=>{
-    let priceRange=filterFor[0]
-    if(priceRange==='500-999'){
+    if(filterFor.includes('500-999')){
       setData(data && data.filter(obj=>(filterFor.includes(obj.color) && filterFor.includes(obj.size) && filterFor.includes(obj.gender) && (obj.price>500 && obj.price<=999))))
     }
-    else if(priceRange==='1000-1999'){
+    else if(filterFor.includes('1000-1999')){
       setData(data && data.filter(obj=>(filterFor.includes(obj.color) && filterFor.includes(obj.size) && filterFor.includes(obj.gender) && (obj.price>1000 && obj.price<=1999))))
     }
-    else if(priceRange==='2000-2999'){
+    else if(filterFor.includes('2000-2999')){
       setData(data && data.filter(obj=>(filterFor.includes(obj.color) && filterFor.includes(obj.size) && filterFor.includes(obj.gender) && (obj.price>2000 && obj.price<=2999))))
     }
-    else if(priceRange==='3000-3999'){
+    else if(filterFor.includes('3000-3999')){
       setData(data && data.filter(obj=>(filterFor.includes(obj.color) && filterFor.includes(obj.size) && filterFor.includes(obj.gender) && (obj.price>3000 && obj.price<=3999))))
     }
-    else if(priceRange==='4000-4999'){
+    else if(filterFor.includes('4000-4999')){
       setData(data && data.filter(obj=>(filterFor.includes(obj.color) && filterFor.includes(obj.size) && filterFor.includes(obj.gender) && (obj.price>4000 && obj.price<=4999))))
     } else{
       setData(data)
     }
   }
   const resetFilter=()=>{
-    setData(products)
+    setData(products);
+    setSelectedOption({
+      size: '',
+      price: '',
+      gender: '',
+      color: '',
+    });
+    setSelectedFilter('');
   }
   return (
     <div>
@@ -87,14 +100,24 @@ const BaseLayout = () => {
         <Navbar />
         <Header />
       </div>
-      <Filter filters={filters} data={data} filterItems={filterItems} resetFilter={resetFilter}/>
+      {window.location.pathname!=="/cart" &&
+      <Filter 
+        selectedFilter={selectedFilter} 
+        setSelectedFilter={setSelectedFilter} 
+        selectedOption={selectedOption} 
+        setSelectedOption={setSelectedOption} 
+        filters={filters} 
+        data={data} 
+        filterItems={filterItems} 
+        resetFilter={resetFilter}
+      />}
       <div className="content"> 
         <Switch>
           <Route exact path="/" render={(props) => <App products={data} {...props} />}/>
           <Route path="/cart" component={Cart} />
-          <Route path="/women" component={Women} />
-          <Route path="/men" component={Men} />
-          <Route path="/clothes" component={Clothes} />
+          <Route path="/women" render={(props) => <Women products={data} {...props}/>}/>
+          <Route path="/men" render={(props) => <Men products={data} {...props}/>}/>
+          <Route path="/clothes" render={(props) => <Clothes products={data} {...props}/>}/>
         </Switch>
       </div>
       <Footer />

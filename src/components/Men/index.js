@@ -4,12 +4,12 @@ import React from 'react';
 import MenItems from './MenItems';
 import './index.css';
 
-const MensProducts = () => (
+const MensProducts = ({products}) => (
   <div className="mens-products">
     <div className="mens-title">
-      <h4>Men's Items</h4>
+      <h4>Men Items</h4>
     </div>
-    <MenItems />
+    <MenItems products={products} />
   </div>
 );
 

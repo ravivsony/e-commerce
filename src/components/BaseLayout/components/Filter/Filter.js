@@ -1,11 +1,8 @@
 import React,{useState,useRef,useEffect} from 'react'
 import './Filter.css'
 
-const Filter = ({filters,filterItems,resetFilter,data}) => {
+const Filter = ({filters,filterItems,resetFilter,data,selectedFilter,setSelectedFilter,selectedOption,setSelectedOption}) => {
     const[isClicked,setIsClicked]=useState(false)
-    const[selectedFilter,setSelectedFilter]=useState('')
-    const[selectedOption,setSelectedOption]=useState('')
-    const[filterFor,setFilterFor]=useState([])
     const[isDisabled,setisDisabled]=useState(true)
 
     const ref= useRef()
@@ -24,23 +21,40 @@ useEffect(() => {
 }, [ref])
 
 useEffect(() => {
-    filterFor &&  filterFor.length>2?setisDisabled(false):setisDisabled(true)
-}, [filterFor.length])
-
-useEffect(() => {
-    setFilterFor([])
-    setSelectedOption('')
-}, [data.length])
+    selectedOption.price && selectedOption.size && selectedOption.gender?setisDisabled(false):setisDisabled(true)
+}, [selectedOption.price,selectedOption.size,selectedOption.gender])
 
 const handleClick=(item)=>{
     setIsClicked(true)
     setSelectedFilter(item.filter_name)
 }
 
-const handleListClick=(option)=>{
-    setSelectedOption(option)
+const handleListClick=(filter, option)=>{
+    if (filter == 'Select Price') {
+        setSelectedOption({
+            ...selectedOption,
+            price: option
+        });
+    }
+    if (filter == 'Select Size') {
+        setSelectedOption({
+            ...selectedOption,
+            size: option
+        });
+    }
+    if (filter == 'Select Gender') {
+        setSelectedOption({
+            ...selectedOption,
+            gender: option
+        });
+    }
+    if (filter == 'Select Color') {
+        setSelectedOption({
+            ...selectedOption,
+            color: option
+        });
+    }
     setIsClicked(false)
-    setFilterFor([...filterFor,option])
 }
   return (
     <div className="filter-container">
@@ -50,11 +64,18 @@ const handleListClick=(option)=>{
                 <div>
                     <div className='filter-item' style={{borderRadius: '4px',backgroundColor: '#fff',boxShadow: '0px 0px 4px rgb(0 0 0 / 15%)',border: 'none'}}>
                         <div style={{display:'flex',padding: '5px 10px 5px 5px',height: '3rem',alignItems: 'center'}}>
-                            <input id='dropdown-input' type='text' value={item.options && item.options.includes(selectedOption)? selectedOption:undefined} style={{fontWeight:'500',letterSpacing: '.14px',textAlign: 'left',border: 'none',margin: 0,textTransform: 'uppercase'}} readOnly onClick={()=>handleClick(item)}  placeholder={item.filter_name}/>
+                            <input 
+                                id='dropdown-input' 
+                                type='text' 
+                                value={(item.filter_name == 'Select Price') ? selectedOption.price : (item.filter_name == 'Select Size') ? selectedOption.size : (item.filter_name == 'Select Gender') ? selectedOption.gender : selectedOption.color}
+                                style={{fontWeight:'500',letterSpacing: '.14px',textAlign: 'left',border: 'none',margin: 0,textTransform: 'uppercase'}} 
+                                readOnly
+                                onClick={()=>handleClick(item)}  
+                                placeholder={item.filter_name}/>
                             <img style={{width:'9px',height:'9px'}} src="https://gomechanic.in/spares/icons/ic_expand_more.svg" alt="" srcset="" />
                             {isClicked && (selectedFilter===item.filter_name)?<ul ref={ref} id='options' style={selectedFilter==='Select Size' || selectedFilter==='Select Color'?{margin:'306px 0px 0px -5px'}:selectedFilter==='Select Gender'?{margin:'145px 0px 0px -5px'}:{margin: '264px 0px 0px -5px'}}>
                             {item.options && item.options.map((option)=>{
-                               return(<li className='list-style'  id={item.options && item.options.length} onClick={()=>handleListClick(option)}>{option}</li>)})
+                               return(<li className='list-style'  id={item.options && item.options.length} onClick={()=>handleListClick(selectedFilter, option)}>{option}</li>)})
                             }</ul>:<React.Fragment></React.Fragment>}
                         </div>
                     </div>
@@ -63,7 +84,7 @@ const handleListClick=(option)=>{
         )
     })
     }
-    {data && data.length>20?<button disabled={isDisabled} style={isDisabled?{opacity:0.7}:{opacity:1}} className='filter-btn' onClick={()=>filterItems(filterFor)}>Filter</button>:<button className='filter-btn' onClick={()=>resetFilter()}>Reset</button>}
+    {data && data.length>20?<button disabled={isDisabled} style={isDisabled?{opacity:0.7}:{opacity:1}} className='filter-btn' onClick={()=>filterItems(Object.values(selectedOption))}>Filter</button>:<button className='filter-btn' onClick={()=>resetFilter()}>Reset</button>}
     </div>
   )
 }

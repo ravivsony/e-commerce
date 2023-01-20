@@ -4,13 +4,13 @@ import React from "react";
 import "./styles.css";
 import ClothesItems from "./ClothesItems";
 
-const Clothes = () => {
+const Clothes = ({products}) => {
   return (
     <div className="clothes">
       <div className="clothes-title">
         <h4>Clothes</h4>
       </div>
-      <ClothesItems />
+      <ClothesItems products={products} />
     </div>
   );
 };

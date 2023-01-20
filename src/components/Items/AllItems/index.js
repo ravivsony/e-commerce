@@ -1,15 +1,16 @@
 //Dependencies
-import React from "react";
+import React,{useEffect} from "react";
 import { FaCartPlus } from "react-icons/fa";
 //Internals
 import CART from "../../CartData";
 import "../index.css";
 
-const getCart = (product) => {
-  CART.push(product);
-};
+const AllItems = ({products}) => {
+  const addToCart = (product) => {
+    CART.push(product)
+  };
 
-const AllItems = ({products}) => (
+  return(
   <div className="items">
     {products && products.map((product) => (
       <div key={product.id} className="item">
@@ -24,7 +25,7 @@ const AllItems = ({products}) => (
 
         <div className="price-add">
           <h5 id="product-price">&#x20B9;{product.price}</h5>
-          <div onClick={() => getCart(product)}>
+          <div onClick={() => addToCart(product)}>
             <FaCartPlus id="add-icon" style={{ fontSize: "x-large" }} />
           </div>
         </div>
@@ -32,5 +33,5 @@ const AllItems = ({products}) => (
     ))}
   </div>
 );
-
+}
 export default AllItems;
