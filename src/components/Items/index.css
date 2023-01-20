@@ -1,9 +1,6 @@
-.items-wrapper {
-  border-top: 4px solid black;
-}
 
 .item {
-  height: 30em;
+  height: 31em;
   width: 20em;
   font-family: "Quicksand", sans-serif;
   overflow: hidden;
@@ -46,6 +43,14 @@ img {
 #product-description {
   font-size: 1em;
   font-family: "Lato", sans-serif;
+  color: grey;
+  font-weight: lighter;
+  margin: 0;
+}
+#product-size {
+  padding-top: 4px;
+  font-size: 0.9em;
+  font-family: 'Lato', sans-serif;
   color: grey;
   font-weight: lighter;
   margin: 0;

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/NavBar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Filter from "./components/Filter/Filter";
 import "./index.css";
 import { Route, Switch } from "react-router-dom";
 import App from "../App";
@@ -10,11 +11,35 @@ import Cart from "../Cart";
 import Women from "../Women";
 import Men from "../Men";
 import Clothes from "../Clothes";
+import products from "../Data/index";
+const filters=[
+  {
+      id:1,
+      filter_name:'Select Price',
+      options:['500-999','1000-1999','2000-2999','3000-3999','4000-4999']
+  },
+  {
+      id:2,
+      filter_name:'Select Size',
+      options:['L','M','XL','XXL','S','XS']
+  },
+  {
+      id:3,
+      filter_name:'Select Gender',
+      options:['men','women']
+  },
+  {
+      id:4,
+      filter_name:'Select Color',
+      options:['brown','light brown','grey','red','black','white']
+  },
 
+]
 const BaseLayout = () => {
   const [index, setIndex] = useState(0);
   const classNames = ["first-header", "second-header", "third-header"];
   const [className, setClassName] = useState(classNames[index]);
+  const [data, setData] = useState([]);
 
   let latestIndex = () => {
     setIndex(index + 1);
@@ -27,19 +52,45 @@ const BaseLayout = () => {
       setIndex(0);
       setClassName(classNames[index]);
     }
-
     return () => clearInterval(timer);
   });
-
+  useEffect(() => {
+    setData(products)
+  }, [])
+  
+  const filterItems=(filterFor)=>{
+    let priceRange=filterFor[0]
+    if(priceRange==='500-999'){
+      setData(data && data.filter(obj=>(filterFor.includes(obj.color) && filterFor.includes(obj.size) && filterFor.includes(obj.gender) && (obj.price>500 && obj.price<=999))))
+    }
+    else if(priceRange==='1000-1999'){
+      setData(data && data.filter(obj=>(filterFor.includes(obj.color) && filterFor.includes(obj.size) && filterFor.includes(obj.gender) && (obj.price>1000 && obj.price<=1999))))
+    }
+    else if(priceRange==='2000-2999'){
+      setData(data && data.filter(obj=>(filterFor.includes(obj.color) && filterFor.includes(obj.size) && filterFor.includes(obj.gender) && (obj.price>2000 && obj.price<=2999))))
+    }
+    else if(priceRange==='3000-3999'){
+      setData(data && data.filter(obj=>(filterFor.includes(obj.color) && filterFor.includes(obj.size) && filterFor.includes(obj.gender) && (obj.price>3000 && obj.price<=3999))))
+    }
+    else if(priceRange==='4000-4999'){
+      setData(data && data.filter(obj=>(filterFor.includes(obj.color) && filterFor.includes(obj.size) && filterFor.includes(obj.gender) && (obj.price>4000 && obj.price<=4999))))
+    } else{
+      setData(data)
+    }
+  }
+  const resetFilter=()=>{
+    setData(products)
+  }
   return (
     <div>
       <div className={className}>
         <Navbar />
         <Header />
       </div>
-      <div className="content">
+      <Filter filters={filters} data={data} filterItems={filterItems} resetFilter={resetFilter}/>
+      <div className="content"> 
         <Switch>
-          <Route exact path="/" component={App} />
+          <Route exact path="/" render={(props) => <App products={data} {...props} />}/>
           <Route path="/cart" component={Cart} />
           <Route path="/women" component={Women} />
           <Route path="/men" component={Men} />

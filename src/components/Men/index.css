@@ -46,6 +46,14 @@ img {
   font-weight: lighter;
   margin: 0;
 }
+#product-size {
+  padding-top: 4px;
+  font-size: 0.9em;
+  font-family: 'Lato', sans-serif;
+  color: grey;
+  font-weight: lighter;
+  margin: 0;
+}
 
 #product-price {
   font-size: 1em;

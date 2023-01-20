@@ -16,6 +16,7 @@ const ClothesItems = () => (
             <div className="product-details">
               <h1 id="product-name">{product.name}</h1>
               <h4 id="product-description">{product.description}</h4>
+              <h5 id="product-size">size: {product.size}</h5>
             </div>
             <div className="price-add">
               <h5 id="product-price">${product.price}</h5>

@@ -2,13 +2,13 @@ import React from "react";
 import AllItems from "./AllItems";
 import "./index.css";
 
-const Products = () => {
+const Products = ({products}) => {
   return (
-    <div className="items-wrapper">
+    <div>
       <div className="items-title">
-        <h4>All Items</h4>
+        <h4>{products.length<20?'Filtered items':'All Items'}</h4>
       </div>
-      <AllItems />
+      <AllItems products={products}  />
     </div>
   );
 };

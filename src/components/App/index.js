@@ -4,9 +4,9 @@ import React from 'react';
 import Products from '../Items';
 import './index.css';
 
-const App = () => (
+const App = ({products}) => (
   <div className="content">
-    <Products />
+    <Products products={products} />
   </div>
 );
 

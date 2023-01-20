@@ -26,4 +26,5 @@
   flex-direction: column;
   background-size: cover;
   background-position: center;
+  border-bottom: 4px solid black;
 }

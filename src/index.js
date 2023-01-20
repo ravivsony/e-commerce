@@ -7,7 +7,6 @@ import { BrowserRouter } from "react-router-dom";
 
 import BaseLayout from "./components/BaseLayout";
 
-import registerServiceWorker from "./registerServiceWorker";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -16,4 +15,3 @@ ReactDOM.render(
 
   document.getElementById("root")
 );
-registerServiceWorker();
