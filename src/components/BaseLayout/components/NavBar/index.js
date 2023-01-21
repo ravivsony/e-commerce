@@ -6,7 +6,7 @@ import "./index.css";
 const Navbar = () => (
   <nav className="navbar">
     <div className="nav-links">
-      <ul>
+      {/* <ul>
         <li>
           <NavLink activeClassName="selected" className="nav-link" exact to="/">
             Home
@@ -22,12 +22,12 @@ const Navbar = () => (
             Men
           </NavLink>
         </li>
-      </ul>
+      </ul> */}
     </div>
     <div className="shopping-cart">
-      <NavLink to="/cart">
+      {/* <NavLink to="/cart">
         <FaShoppingCart className="cartIcon" />
-      </NavLink>
+      </NavLink> */}
     </div>
   </nav>
 );

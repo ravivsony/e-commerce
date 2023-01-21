@@ -3,4 +3,5 @@
   margin: 0;
   width: 100%;
   justify-content: space-between;
+  min-height: 27vh;
 }

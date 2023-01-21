@@ -1,14 +1,46 @@
 //Dependencies
-import React,{useEffect} from "react";
-import { FaCartPlus } from "react-icons/fa";
+import React,{useState,useEffect} from "react";
 //Internals
-import CART from "../../CartData";
 import "../index.css";
 
-const AllItems = ({products}) => {
+const AllItems = ({products,cart,setCart}) => {
+  const [counter, setCounter] = useState({
+    count:0,
+    id:null
+  })
+  // const [selectedProduct, setSelectedProduct] = useState({})
   const addToCart = (product) => {
-    CART.push(product)
+    setCart([...cart,product])
+    cart && cart.map((item)=>{
+      if(item.id===product.id){
+        setCounter({...counter,id:product.id,count:counter.count+1})
+        // setSelectedProduct(product.id)
+      }
+    })
+    console.log('addtocart',cart)
   };
+  const handleCounter=(operation,product)=>{
+    cart && cart.map((item)=>{
+      if(item.id===product.id && operation==='minus'){
+        setCounter({...counter,id:product.id,count:counter.count-1})
+        let arr=cart.splice(1,product.id)
+        setCart(arr)
+      }
+      else if(item.id===product.id && operation==='plus' ){
+        setCounter({...counter,id:product.id,count:counter.count+1})
+        setCart([...cart,product])
+      }
+    })
+    console.log(cart)
+  }
+  // useEffect(() => {
+  //  CART && CART.map((item)=>{
+  //     if(selectedProduct===item.id){
+  //       // setCounter({...counter,id:item.id,count:counter.count+1})
+  //     }
+  //   })
+  // }, [CART.length>1])
+  
 
   return(
   <div className="items">
@@ -25,9 +57,13 @@ const AllItems = ({products}) => {
 
         <div className="price-add">
           <h5 id="product-price">&#x20B9;{product.price}</h5>
-          <div onClick={() => addToCart(product)}>
-            <FaCartPlus id="add-icon" style={{ fontSize: "x-large" }} />
-          </div>
+          {counter.count===0?<div className="addBtn" onClick={() => addToCart(product)}>
+            + ADD
+          </div>:  <div className="counter" >
+            <div className='minus' onClick={() => handleCounter('minus',product)}><img style={{width: 'inherit',height: 'inherit'}} src="https://gomechanic.in/spares/icons/redMinus.svg" alt="minus" srcset="" /></div>
+            <span className='count'>{counter.count}</span>
+            <div className='plus' onClick={() => handleCounter('plus',product)}><img style={{width: 'inherit',height: 'inherit'}} src="https://gomechanic.in/spares/icons/redPlus.svg" alt="plus" srcset="" /></div>
+          </div>}
         </div>
       </div>
     ))}

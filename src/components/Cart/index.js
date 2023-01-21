@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import "../Data";
 import "./index.css";
 // import { FaTrash } from "react-icons/fa";
-import CART from "../CartData";
 
-const CartProducts = () => {
+const CartProducts = ({cart,setCart}) => {
   return (
     <div>
-      <h4 className="center">Cart Items</h4>
+      <h4 className="center">{cart.length>0?'Cart Items':'Cart is Empty'}</h4>
       <div className="items">
-        {CART.map((product) => {
+        {cart.map((product) => {
           return (
             <div key={product.id} className="item">
               <div className="product-img">

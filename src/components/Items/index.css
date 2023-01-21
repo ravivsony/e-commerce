@@ -1,6 +1,6 @@
 
 .item {
-  height: 31em;
+  height: 31.5em;
   width: 20em;
   font-family: "Quicksand", sans-serif;
   overflow: hidden;
@@ -58,6 +58,7 @@ img {
 
 #product-price {
   font-size: 1em;
+  margin: 10px 0 0 0;
 }
 
 .price-add {
@@ -90,4 +91,54 @@ i:hover {
   color: rgb(90, 89, 89);
 
   transition: 0.3s;
+}
+
+.addBtn{
+  margin-left: auto;
+    padding: 6px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: .00875rem;
+    cursor: pointer;
+    text-align: center;
+    min-width: 70px;
+    display: inline-block;
+    border: 1px solid #e73c33;
+    color: #e73c33;
+    border-radius: 0.1875rem;
+}
+.counter{
+  width: 70px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  border: 0.75px solid #e73c33;
+  padding: 6px;
+}
+.minus{
+  width: 13px;
+  padding-top: 3px;
+}
+.plus{
+  width: 13px;
+  padding-top: 3px;
+}
+.count{
+  color: #e73c33;
+  margin: 0 0.5rem;
+  display: flex;
+
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: .14px;
+  letter-spacing: .00875rem;
+  cursor: pointer;
+  text-align: center;
 }

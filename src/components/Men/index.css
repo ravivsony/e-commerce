@@ -1,6 +1,6 @@
 
 .item {
-  height: 30em;
+  height: 31.5em;
   width: 20em;
   font-family: "Quicksand", sans-serif;
   overflow: hidden;
@@ -54,6 +54,7 @@ img {
 
 #product-price {
   font-size: 1em;
+  margin: 10px 0 0 0;
 }
 
 .price-add {

@@ -5,12 +5,11 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Filter from "./components/Filter/Filter";
 import "./index.css";
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter as Route, Routes } from "react-router-dom";
 import App from "../App";
 import Cart from "../Cart";
 import Women from "../Women";
 import Men from "../Men";
-import Clothes from "../Clothes";
 import products from "../Data/index";
 const filters=[
   {
@@ -47,7 +46,7 @@ const BaseLayout = () => {
     gender: '',
     color: '',
   });
-
+  const [cart, setCart] = useState([])
   let latestIndex = () => {
     setIndex(index + 1);
   };
@@ -112,13 +111,12 @@ const BaseLayout = () => {
         resetFilter={resetFilter}
       />}
       <div className="content"> 
-        <Switch>
-          <Route exact path="/" render={(props) => <App products={data} {...props} />}/>
-          <Route path="/cart" component={Cart} />
-          <Route path="/women" render={(props) => <Women products={data} {...props}/>}/>
-          <Route path="/men" render={(props) => <Men products={data} {...props}/>}/>
-          <Route path="/clothes" render={(props) => <Clothes products={data} {...props}/>}/>
-        </Switch>
+        <Routes>
+          <Route exact path="/" element={<App products={data} cart={cart} setCart={setCart} />}/>
+          {/* <Route path="/cart" render={(props) => <Cart products={data} cart={cart} setCart={setCart}  {...props}/>}/>
+          <Route path="/women" render={(props) => <Women products={data} cart={cart} setCart={setCart}  {...props}/>}/>
+          <Route path="/men" render={(props) => <Men products={data} cart={cart} setCart={setCart}  {...props}/>}/> */}
+        </Routes>
       </div>
       <Footer />
     </div>
