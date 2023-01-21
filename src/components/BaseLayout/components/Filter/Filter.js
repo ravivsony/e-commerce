@@ -1,9 +1,10 @@
 import React,{useState,useRef,useEffect} from 'react'
 import './Filter.css'
 
-const Filter = ({filters,filterItems,resetFilter,data,selectedFilter,setSelectedFilter,selectedOption,setSelectedOption}) => {
+const Filter = ({filters,filterItems,resetFilter,data,selectedOption,setSelectedOption}) => {
     const[isClicked,setIsClicked]=useState(false)
     const[isDisabled,setisDisabled]=useState(true)
+    const[selectedFilter,setSelectedFilter]=useState('')
 
     const ref= useRef()
 useEffect(() => {

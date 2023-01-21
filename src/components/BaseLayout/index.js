@@ -41,7 +41,6 @@ const BaseLayout = () => {
   const classNames = ["first-header", "second-header", "third-header"];
   const [className, setClassName] = useState(classNames[index]);
   const [data, setData] = useState([]);
-  const[selectedFilter,setSelectedFilter]=useState('')
   const[selectedOption,setSelectedOption]=useState({
     size: '',
     price: '',
@@ -103,8 +102,6 @@ const BaseLayout = () => {
       </div>
       {window.location.pathname!=="/cart" &&
       <Filter 
-        selectedFilter={selectedFilter} 
-        setSelectedFilter={setSelectedFilter} 
         selectedOption={selectedOption} 
         setSelectedOption={setSelectedOption} 
         filters={filters} 
