@@ -1,12 +1,14 @@
 //Dependencies
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
+import {AppData} from '../../BaseLayout/index'
 
-const WomenItems = ({products,cart,setCart}) => {
+const WomenItems = () => {
 
 const [counter, setCounter] = useState({
   count:0,
   id:null
 })
+const {data,cart,setCart}=useContext(AppData)
 // const [selectedProduct, setSelectedProduct] = useState({})
 const addToCart = (product) => {
   setCart([...cart,product])
@@ -34,8 +36,9 @@ const handleCounter=(operation,product)=>{
 }
 
 return (<div className="items">
-    {products && products.map((product) => (
-      <div key={product.id} className="item">
+    {data && data.map((product) => {
+      if(product.gender==='women'){
+     return ( <div key={product.id} className="item">
         <div className="product-img">
           <img alt={product.name} src={product.img} />
         </div>
@@ -55,8 +58,8 @@ return (<div className="items">
             <div className='plus' onClick={() => handleCounter('plus',product)}><img style={{width: 'inherit',height: 'inherit'}} src="https://gomechanic.in/spares/icons/redPlus.svg" alt="plus" srcset="" /></div>
           </div>}
         </div>
-      </div>
-    ))}
+      </div>)
+    }})}
   </div>
 );
 }

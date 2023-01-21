@@ -1,14 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 import AllItems from "./AllItems";
 import "./index.css";
+import { AppData } from "../BaseLayout";
 
-const Products = ({products,cart,setCart}) => {
+const Products = () => {
+  const data=useContext(AppData)
   return (
     <div>
       <div className="items-title">
-        <h4>{products.length<20?'Filtered items':'All Items'}</h4>
+        <h4>{data.length<20?'Filtered Collection':'Big Deals'}</h4>
       </div>
-      <AllItems products={products} cart={cart} setCart={setCart}  />
+      <AllItems />
     </div>
   );
 };

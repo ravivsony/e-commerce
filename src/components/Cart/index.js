@@ -1,14 +1,21 @@
-import React, {useState, useEffect } from "react";
+import React, {useContext } from "react";
 import "../Data";
 import "./index.css";
-// import { FaTrash } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
+import { AppData } from "../BaseLayout";
 
-const CartProducts = ({cart,setCart}) => {
+const CartProducts = () => {
+  
+  const {cart,setCart}=useContext(AppData)
+  const removeItem=(id)=>{
+    setCart(cart.filter(item=>item.id!==id))
+  }
+
   return (
     <div>
-      <h4 className="center">{cart.length>0?'Cart Items':'Cart is Empty'}</h4>
+      <h4 className="center">{cart.length>0?'Cart':'Cart is Empty'}</h4>
       <div className="items">
-        {cart.map((product) => {
+        {cart && cart.map((product) => {
           return (
             <div key={product.id} className="item">
               <div className="product-img">
@@ -22,6 +29,9 @@ const CartProducts = ({cart,setCart}) => {
 
               <div className="price-add">
                 <h5 id="product-price">&#x20B9;{product.price}</h5>
+                <div onClick={()=>removeItem(product.id)}>
+                <FaTrashAlt className='trash' />
+                </div>
               </div>
               <br />
             </div>

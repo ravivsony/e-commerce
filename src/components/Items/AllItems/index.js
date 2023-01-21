@@ -1,14 +1,17 @@
 //Dependencies
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useContext} from "react";
 //Internals
 import "../index.css";
+import {AppData} from "../../BaseLayout/index"
 
-const AllItems = ({products,cart,setCart}) => {
+const AllItems = () => {
   const [counter, setCounter] = useState({
     count:0,
     id:null
   })
   // const [selectedProduct, setSelectedProduct] = useState({})
+  const {data,cart,setCart} = useContext(AppData);
+
   const addToCart = (product) => {
     setCart([...cart,product])
     cart && cart.map((item)=>{
@@ -44,7 +47,7 @@ const AllItems = ({products,cart,setCart}) => {
 
   return(
   <div className="items">
-    {products && products.map((product) => (
+    {data && data.map((product) => (
       <div key={product.id} className="item">
         <div className="product-img">
           <img alt={product.name} src={product.img} />

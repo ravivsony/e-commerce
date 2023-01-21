@@ -1,34 +1,35 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./index.css";
 
-const Navbar = () => (
+const Navbar = ({cart}) => (
   <nav className="navbar">
     <div className="nav-links">
-      {/* <ul>
+      <ul>
         <li>
-          <NavLink activeClassName="selected" className="nav-link" exact to="/">
+          <Link activeClassName="selected" className="nav-link" exact to="/">
             Home
-          </NavLink>
+          </Link>
         </li>
         <li>
-          <NavLink activeClassName="selected" className="nav-link" to="/women">
+          <Link activeClassName="selected" className="nav-link" to="/women">
             Women
-          </NavLink>
+          </Link>
         </li>
         <li>
-          <NavLink activeClassName="selected" className="nav-link" to="/men">
+          <Link activeClassName="selected" className="nav-link" to="/men">
             Men
-          </NavLink>
+          </Link>
         </li>
-      </ul> */}
+      </ul>
     </div>
-    <div className="shopping-cart">
-      {/* <NavLink to="/cart">
-        <FaShoppingCart className="cartIcon" />
-      </NavLink> */}
+    <Link to="/cart">
+    <div className="shopping-cart" style={{position:'relative'}}>
+      <div className="cartIcon">Checkout <FaShoppingCart /></div>
+      <div><span id="badge">{cart.length>0 && cart.length}</span></div>
     </div>
+    </Link>
   </nav>
 );
 

@@ -1,7 +1,6 @@
 .navbar {
   display: flex;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-  height: 3em;
   justify-content: center;
   align-items: center;
   box-shadow: none;
@@ -32,13 +31,20 @@
   transition: 0.3s;
 }
 .cartIcon {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .cartIcon:hover {
   text-decoration: none;
 
   background: transparent;
-  color: rgb(100, 96, 96);
+  color: rgb(195, 194, 194);
   transition: 0.3s;
-  font-size: 1.3rem;
+  font-size: 1.025rem;
+}
+#badge{
+  color: red;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  font-size: 14px;
 }

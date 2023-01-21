@@ -4,9 +4,9 @@ import React from 'react';
 import Products from '../Items';
 import './index.css';
 
-const App = ({products,cart,setCart}) => (
+const App = () => (
   <div className="content">
-    <Products products={products} cart={cart} setCart={setCart} />
+    <Products />
   </div>
 );
 

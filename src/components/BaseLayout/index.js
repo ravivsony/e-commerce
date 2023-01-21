@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,createContext,useContext } from "react";
 // Externals
 import Navbar from "./components/NavBar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Filter from "./components/Filter/Filter";
 import "./index.css";
-import { BrowserRouter as Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import App from "../App";
 import Cart from "../Cart";
 import Women from "../Women";
@@ -34,6 +34,8 @@ const filters=[
   },
 
 ]
+const AppData=createContext()
+
 const BaseLayout = () => {
   const [index, setIndex] = useState(0);
   const classNames = ["first-header", "second-header", "third-header"];
@@ -96,7 +98,7 @@ const BaseLayout = () => {
   return (
     <div>
       <div className={className}>
-        <Navbar />
+        <Navbar cart={cart} />
         <Header />
       </div>
       {window.location.pathname!=="/cart" &&
@@ -111,15 +113,18 @@ const BaseLayout = () => {
         resetFilter={resetFilter}
       />}
       <div className="content"> 
+      <AppData.Provider value={{data,cart,setCart}}>
         <Routes>
-          <Route exact path="/" element={<App products={data} cart={cart} setCart={setCart} />}/>
-          {/* <Route path="/cart" render={(props) => <Cart products={data} cart={cart} setCart={setCart}  {...props}/>}/>
-          <Route path="/women" render={(props) => <Women products={data} cart={cart} setCart={setCart}  {...props}/>}/>
-          <Route path="/men" render={(props) => <Men products={data} cart={cart} setCart={setCart}  {...props}/>}/> */}
+            <Route exact path="/" element={<App/>}/>
+            <Route path="/cart" element={<Cart />}/>
+            <Route path="/women" element={<Women />} />
+            <Route path="/men" element={<Men />} />
         </Routes>
+      </AppData.Provider>
       </div>
       <Footer />
     </div>
   );
 };
 export default BaseLayout;
+export {AppData}

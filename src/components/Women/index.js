@@ -4,12 +4,12 @@ import React from "react";
 import "./index.css";
 import WomenItems from "./WomenItems";
 
-const WomensProducts = ({products,cart,setCart}) => (
+const WomensProducts = () => (
   <div className="womens-products">
     <div className="womens-title">
-      <h4>Women Items</h4>
+      <h4>Women Collection</h4>
     </div>
-    <WomenItems products={products}  cart={cart} setCart={setCart}/>
+    <WomenItems />
   </div>
 );
 
