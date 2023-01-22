@@ -25,26 +25,46 @@
 
 .navbar li a:hover {
   text-decoration: none;
-
   background: transparent;
   color: black;
   transition: 0.3s;
 }
 .cartIcon {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .cartIcon:hover {
-  text-decoration: none;
-
-  background: transparent;
-  color: rgb(195, 194, 194);
+  color: #E44650;
   transition: 0.3s;
-  font-size: 1.025rem;
 }
 #badge{
-  color: red;
-  position: absolute;
-  top: -12px;
-  right: -12px;
-  font-size: 14px;
+  color: black;
+  font-size: 12px;
+}
+.viewCart{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 3.7rem;
+  background: white;
+  height: 2rem;
+  border-radius: 4px;
+}
+@media only screen and (max-width: 768px) {
+  .cartIcon {
+    font-size: 1.2rem;
+  }
+  #badge{
+    color: black;
+    font-size: 10px;
+  }
+  .viewCart{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 2.95rem;
+    background: white;
+    height: 1.7rem;
+    border-radius: 2px;
+    margin-right: 16px;
+  }
 }

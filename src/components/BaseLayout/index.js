@@ -1,4 +1,4 @@
-import React, { useState, useEffect,createContext,useContext } from "react";
+import React, { useState, useEffect,createContext } from "react";
 // Externals
 import Navbar from "./components/NavBar";
 import Header from "./components/Header";
@@ -48,6 +48,7 @@ const BaseLayout = () => {
     color: '',
   });
   const [cart, setCart] = useState([])
+  
   let latestIndex = () => {
     setIndex(index + 1);
   };
@@ -94,6 +95,27 @@ const BaseLayout = () => {
     });
     setSelectedFilter('');
   }
+  const increment=(product)=>{
+    const index = cart?.findIndex(item => item.id === product.id);
+    if (index === -1) {
+      setCart([{...product,count:1}])
+    } else {
+      cart[index].count += 1;
+      setCart([...cart])
+    }
+  }
+
+  const decrement=(product)=>{
+    const index = cart?.findIndex(item => item.id === product.id);
+    if (index === -1) {
+      setCart([{...product,count:1}])
+    } else {
+      if(cart[index].count!==0) {
+        cart[index].count -= 1;
+        setCart([...cart])
+      }
+    }
+  }
   return (
     <div>
       <div className={className}>
@@ -110,7 +132,7 @@ const BaseLayout = () => {
         resetFilter={resetFilter}
       />}
       <div className="content"> 
-      <AppData.Provider value={{data,cart,setCart}}>
+      <AppData.Provider value={{data,cart,setCart,increment,decrement}}>
         <Routes>
             <Route exact path="/" element={<App/>}/>
             <Route path="/cart" element={<Cart />}/>

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./index.css";
@@ -25,10 +25,15 @@ const Navbar = ({cart}) => (
       </ul>
     </div>
     <Link to="/cart">
-    <div className="shopping-cart" style={{position:'relative'}}>
-      <div className="cartIcon">Checkout <FaShoppingCart /></div>
-      <div><span id="badge">{cart.length>0 && cart.length}</span></div>
-    </div>
+    {cart?.length?
+    <div className='viewCart'>
+       <FaShoppingCart style={{color:'black'}} className='cartIcon' />
+      <span id="badge">{cart?.reduce((acc,curVal)=> acc+ curVal.count ,0)}</span>
+      </div>:
+      <div style={{position:'relative'}}>
+       <FaShoppingCart className='cartIcon' />
+      </div>
+      }
     </Link>
   </nav>
 );

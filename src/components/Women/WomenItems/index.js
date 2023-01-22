@@ -1,38 +1,13 @@
 //Dependencies
-import React,{useState,useContext} from "react";
+import React,{useContext} from "react";
 import {AppData} from '../../BaseLayout/index'
 
 const WomenItems = () => {
 
-const [counter, setCounter] = useState({
-  count:0,
-  id:null
-})
-const {data,cart,setCart}=useContext(AppData)
-// const [selectedProduct, setSelectedProduct] = useState({})
-const addToCart = (product) => {
-  setCart([...cart,product])
-  cart && cart.map((item)=>{
-    if(item.id===product.id){
-      setCounter({...counter,id:product.id,count:counter.count+1})
-      // setSelectedProduct(product.id)
-    }
-  })
-  console.log('addtocart',cart)
-};
-const handleCounter=(operation,product)=>{
-  cart && cart.map((item)=>{
-    if(item.id===product.id && operation==='minus'){
-      setCounter({...counter,id:product.id,count:counter.count-1})
-      let arr=cart.splice(1,product.id)
-      setCart(arr)
-    }
-    else if(item.id===product.id && operation==='plus' ){
-      setCounter({...counter,id:product.id,count:counter.count+1})
-      setCart([...cart,product])
-    }
-  })
-  console.log(cart)
+  const {data,cart,setCart,increment,decrement} = useContext(AppData);
+
+const addToCart=(product)=>{
+  setCart([...cart,{...product,count:1}])
 }
 
 return (<div className="items">
@@ -50,15 +25,17 @@ return (<div className="items">
 
         <div className="price-add">
           <h5 id="product-price">&#x20B9;{product.price}</h5>
-          {counter.count===0?<div className="addBtn" onClick={() => addToCart(product)}>
+          {!cart?.find(item=>item.id===product.id)?<div className="addBtn" onClick={() => addToCart(product)}>
             + ADD
-          </div>:  <div className="counter" >
-            <div className='minus' onClick={() => handleCounter('minus',product)}><img style={{width: 'inherit',height: 'inherit'}} src="https://gomechanic.in/spares/icons/redMinus.svg" alt="minus" srcset="" /></div>
-            <span className='count'>{counter.count}</span>
-            <div className='plus' onClick={() => handleCounter('plus',product)}><img style={{width: 'inherit',height: 'inherit'}} src="https://gomechanic.in/spares/icons/redPlus.svg" alt="plus" srcset="" /></div>
+          </div>:
+               <div className="counter" >
+            <div className='minus' onClick={() => decrement(product)}><img style={{width: 'inherit',height: 'inherit'}} src="https://gomechanic.in/spares/icons/redMinus.svg" alt="minus" srcSet="" /></div>
+            {cart.map((item)=>(product.id===item.id && <span className='count'>{item.count}</span>))}
+            <div className='plus' onClick={() => increment(product)}><img style={{width: 'inherit',height: 'inherit'}} src="https://gomechanic.in/spares/icons/redPlus.svg" alt="plus" srcSet="" /></div>
           </div>}
         </div>
-      </div>)
+      </div>
+      )
     }})}
   </div>
 );

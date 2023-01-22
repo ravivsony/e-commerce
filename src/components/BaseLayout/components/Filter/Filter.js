@@ -73,7 +73,7 @@ const handleListClick=(filter, option)=>{
                                 readOnly
                                 onClick={()=>handleClick(item)}  
                                 placeholder={item.filter_name}/>
-                            <img style={{width:'9px',height:'9px'}} src="https://gomechanic.in/spares/icons/ic_expand_more.svg" alt="" srcset="" />
+                            <img style={{width:'9px',height:'9px'}} src="https://gomechanic.in/spares/icons/ic_expand_more.svg" alt="" srcSet="" />
                             {isClicked && (selectedFilter===item.filter_name)?<ul ref={ref} id='options' style={selectedFilter==='Select Size' || selectedFilter==='Select Color'?{margin:'306px 0px 0px -5px'}:selectedFilter==='Select Gender'?{margin:'145px 0px 0px -5px'}:{margin: '264px 0px 0px -5px'}}>
                             {item.options && item.options.map((option)=>{
                                return(<li className='list-style'  id={item.options && item.options.length} onClick={()=>handleListClick(selectedFilter, option)}>{option}</li>)})
