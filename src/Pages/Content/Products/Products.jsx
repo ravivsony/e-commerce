@@ -6,8 +6,16 @@ const Products = memo(({ gender }) => {
   const { data, cart, setCart, increment, decrement } = useContext(AppData);
 
   const addToCart = (product) => {
-    setCart([...cart, { ...product, count: 1 }])
-  }
+    const existingProduct = cart.find(item => item.id === product.id);
+    if (existingProduct) {
+      const updatedCart = cart.map(item =>
+        item.id === product.id ? { ...item, count: item.count + 1 } : item
+      );
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, { ...product, count: 1 }]);
+    }
+  };
   return (
     <div className="content">
       <div className="items-title">

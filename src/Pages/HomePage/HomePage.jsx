@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext, memo } from "react";
+import { useLocation } from "react-router-dom";
 // Externals
 import Filter from "./components/Filter/Filter";
 import "./HomePage.css";
@@ -40,6 +41,7 @@ const HomePage = memo(() => {
     color: '',
   });
   const [cart, setCart] = useState([])
+  const location = useLocation()
 
   useEffect(() => {
     setData(products)
@@ -67,10 +69,7 @@ const HomePage = memo(() => {
     if (selectedOption.price) {
       const [minPrice, maxPrice] = selectedOption.price.split('-').map(Number);
 
-      filteredData = filteredData.filter(product => {
-        console.log('filteredData', product, minPrice, maxPrice);
-        return product.price >= minPrice && product.price <= maxPrice
-      })
+      filteredData = filteredData.filter(product => product.price >= minPrice && product.price <= maxPrice)
     }
 
     setData(filteredData);
@@ -97,32 +96,38 @@ const HomePage = memo(() => {
   }
 
   const decrement = (product) => {
-    const index = cart?.findIndex(item => item.id === product.id);
-    if (cart[index].count > 0) {
-      cart[index].count -= 1;
-      setCart([...cart])
+    const existingProduct = cart.find(item => item.id === product.id);
+    if (existingProduct) {
+      if (existingProduct.count > 1) {
+        const updatedCart = cart.map(item =>
+          item.id === product.id ? { ...item, count: item.count - 1 } : item
+        );
+        setCart(updatedCart);
+      } else {
+        setCart(cart.filter(item => item.id !== product.id));
+      }
     }
-  }
+  };
 
   return (
     <div>
-      <Header cart={cart} />
-      {window.location.pathname !== "/cart" &&
-        <Filter
-          selectedOption={selectedOption}
-          setSelectedOption={setSelectedOption}
-          filters={filters}
-          data={data}
-          filterItems={filterItems}
-          resetFilter={resetFilter}
-        />}
       <AppData.Provider value={{ data, cart, setCart, increment, decrement }}>
+        <Header cart={cart} />
+        {location.pathname !== "/cart" &&
+          <Filter
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            filters={filters}
+            data={data}
+            filterItems={filterItems}
+            resetFilter={resetFilter}
+          />}
         <Content />
-      </AppData.Provider>
 
-      <div className="footer">
-        <p>© 2021 Copyright Ravi Verma</p>
-      </div>
+        <div className="footer">
+          <p>© 2021 Copyright Ravi Verma</p>
+        </div>
+      </AppData.Provider>
     </div>
   );
 });

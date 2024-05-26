@@ -8,14 +8,12 @@ import Women from "./Women/Women";
 const Content = memo(() => {
 
     return (
-        <div className="content">
-            <Routes>
-                <Route exact path="/" element={<Products />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/women" element={<Women />} />
-                <Route path="/men" element={<Men />} />
-            </Routes>
-        </div>
+        <Routes>
+            <Route exact path="/" element={<Products />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/women" element={<Women />} />
+            <Route path="/men" element={<Men />} />
+        </Routes>
 
     )
 })
