@@ -1,15 +1,14 @@
 //Dependencies
 import React from "react";
 //Internals
-import "./index.css";
-import WomenItems from "./WomenItems";
+import Products from "../Products/Products";
 
 const WomensProducts = () => (
   <div className="womens-products">
     <div className="womens-title">
       <h4>Women Collection</h4>
     </div>
-    <WomenItems />
+    <Products gender={'women'} />
   </div>
 );
 

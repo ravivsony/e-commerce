@@ -1,17 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
-
-import "./index.css";
-
+import ReactDOM from "react-dom/client";  // Updated import for React 18
 import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
 
-import BaseLayout from "./components/BaseLayout";
+const rootElement = document.getElementById("root");
+const root = ReactDOM.createRoot(rootElement);
 
-
-ReactDOM.render(
-  <BrowserRouter>
-    <BaseLayout />
-  </BrowserRouter>,
-
-  document.getElementById("root")
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 );

@@ -9,8 +9,9 @@ const products = [
     img: "https://image.ibb.co/kOhL6k/img1.jpg",
     inCart: false,
     category: "clothes",
-    color:'brown',
-    size:'L'
+    color: 'brown',
+    size: 'L',
+    count: 0
   },
   {
     id: 2,
@@ -21,9 +22,10 @@ const products = [
     type: "shirt",
     img: "https://image.ibb.co/nNmKz5/img2.jpg",
     inCart: false,
-    color:'light brown',
+    color: 'light brown',
     category: "clothes",
-    size:'XL'
+    size: 'XL',
+    count: 0
   },
   {
     id: 3,
@@ -34,9 +36,10 @@ const products = [
     type: "shirt",
     img: "https://image.ibb.co/n6iMCQ/img3.jpg",
     inCart: false,
-    color:'grey',
+    color: 'grey',
     category: "clothes",
-    size:'XXL'
+    size: 'XXL',
+    count: 0
   },
   {
     id: 4,
@@ -47,9 +50,10 @@ const products = [
     type: "shirt",
     img: "https://image.ibb.co/dVfORk/img4.jpg",
     inCart: false,
-    color:'light brown ',
+    color: 'light brown ',
     category: "clothes",
-    size:'XXL'
+    size: 'XXL',
+    count: 0
   },
   {
     id: 5,
@@ -60,9 +64,10 @@ const products = [
     type: "shirt",
     img: "https://image.ibb.co/jpMxmk/img5.jpg",
     inCart: false,
-    color:'grey',
+    color: 'grey',
     category: "clothes",
-    size:'S'
+    size: 'S',
+    count: 0
   },
   {
     id: 6,
@@ -73,9 +78,10 @@ const products = [
     type: "blouse",
     img: "https://image.ibb.co/mJppz5/img6.jpg",
     inCart: false,
-    color:'red',
+    color: 'red',
     category: "clothes",
-    size:'XS'
+    size: 'XS',
+    count: 0
   },
   {
     id: 7,
@@ -86,9 +92,10 @@ const products = [
     type: "shirt",
     img: "https://image.ibb.co/eZiSmk/img7.jpg",
     inCart: false,
-    color:'grey',
+    color: 'grey',
     category: "clothes",
-    size:'L'
+    size: 'L',
+    count: 0
   },
   {
     id: 8,
@@ -100,8 +107,9 @@ const products = [
     img: "https://image.ibb.co/dyCysQ/img8.jpg",
     inCart: false,
     category: "clothes",
-    color:'white',
-    size:'L'
+    color: 'white',
+    size: 'L',
+    count: 0
   },
   {
     id: 9,
@@ -113,8 +121,9 @@ const products = [
     img: "http://media.istockphoto.com/photos/young-man-looks-to-the-side-picture-id184616842?k=6&m=184616842&s=612x612&w=0&h=SmtsffRByKDH4_HtzGY8bWvHgH8o_4epWVPogvfJXnk=",
     inCart: false,
     category: "clothes",
-    color:'brown',
-    size:'XL'
+    color: 'brown',
+    size: 'XL',
+    count: 0
   },
   {
     id: 10,
@@ -126,8 +135,9 @@ const products = [
     img: "https://image.ibb.co/f6gcK5/img9.jpg",
     inCart: false,
     category: "clothes",
-    color:'light brown',
-    size:'XXL'
+    color: 'light brown',
+    size: 'XXL',
+    count: 0
   },
 
   {
@@ -139,9 +149,10 @@ const products = [
     type: "shirt",
     img: "http://media.istockphoto.com/photos/smiling-young-man-in-blank-black-tshirt-picture-id464946525?k=6&m=464946525&s=612x612&w=0&h=KAjCFoJGDcFcx8R33Tq1vzqbfixh1XwGpFeiRNoTkRQ=",
     inCart: false,
-    color:'black',
+    color: 'black',
     category: "clothes",
-    size:'S'
+    size: 'S',
+    count: 0
   },
   {
     id: 12,
@@ -152,9 +163,10 @@ const products = [
     type: "shirt",
     img: "http://media.istockphoto.com/photos/portrait-of-young-man-wearing-tshirt-picture-id465207699?k=6&m=465207699&s=612x612&w=0&h=wSacC0bmcrekig1DW8lOwH7y3X0e4R9266-TuivVQJA=",
     inCart: false,
-    color:'grey',
+    color: 'grey',
     category: "clothes",
-    size:'M'
+    size: 'M',
+    count: 0
   },
   {
     id: 13,
@@ -165,9 +177,10 @@ const products = [
     type: "shirt",
     img: "http://media.istockphoto.com/photos/young-man-wearing-a-white-shirt-picture-id465331977?k=6&m=465331977&s=612x612&w=0&h=-K3c5eE2dZGmg6d5BrBfxOvcHRP7PwHrylyjuEVjbZo=",
     inCart: false,
-    color:'white',
+    color: 'white',
     category: "clothes",
-    size:'L'
+    size: 'L',
+    count: 0
   },
   {
     id: 14,
@@ -178,9 +191,10 @@ const products = [
     type: "shirt",
     img: "http://media.istockphoto.com/photos/young-man-looks-to-the-side-picture-id184616842?k=6&m=184616842&s=612x612&w=0&h=SmtsffRByKDH4_HtzGY8bWvHgH8o_4epWVPogvfJXnk=",
     inCart: false,
-    color:'brown',
+    color: 'brown',
     category: "clothes",
-    size:'M'
+    size: 'M',
+    count: 0
   },
   {
     id: 15,
@@ -191,9 +205,10 @@ const products = [
     type: "shirt",
     img: "http://media.istockphoto.com/photos/smiling-man-in-a-black-t-shirt-picture-id520883622?k=6&m=520883622&s=612x612&w=0&h=XuxfQE0EOo_uWqA8SzNJvZ9Vn-sKR_cT4J9GRIudE4U=",
     inCart: false,
-    color:'black',
+    color: 'black',
     category: "clothes",
-    size:'XXL'
+    size: 'XXL',
+    count: 0
   },
   {
     id: 16,
@@ -205,8 +220,9 @@ const products = [
     img: "http://media.istockphoto.com/photos/portrait-of-young-man-wearing-tshirt-picture-id465207699?k=6&m=465207699&s=612x612&w=0&h=wSacC0bmcrekig1DW8lOwH7y3X0e4R9266-TuivVQJA=",
     inCart: false,
     category: "clothes",
-    color:'grey',
-    size:'L'
+    color: 'grey',
+    size: 'L',
+    count: 0
   },
   {
     id: 17,
@@ -218,8 +234,9 @@ const products = [
     img: "http://media.istockphoto.com/photos/young-man-looks-to-the-side-picture-id184616842?k=6&m=184616842&s=612x612&w=0&h=SmtsffRByKDH4_HtzGY8bWvHgH8o_4epWVPogvfJXnk=",
     inCart: false,
     category: "clothes",
-    color:'brown',
-    size:'XS'
+    color: 'brown',
+    size: 'XS',
+    count: 0
   },
   {
     id: 18,
@@ -231,8 +248,9 @@ const products = [
     img: "https://image.ibb.co/f6gcK5/img9.jpg",
     inCart: false,
     category: "clothes",
-    color:'light brown',
-    size:'L'
+    color: 'light brown',
+    size: 'L',
+    count: 0
   },
   {
     id: 19,
@@ -244,8 +262,9 @@ const products = [
     img: "http://media.istockphoto.com/photos/young-man-looks-to-the-side-picture-id184616842?k=6&m=184616842&s=612x612&w=0&h=SmtsffRByKDH4_HtzGY8bWvHgH8o_4epWVPogvfJXnk=",
     inCart: false,
     category: "clothes",
-    color:'brown',
-    size:'M'
+    color: 'brown',
+    size: 'M',
+    count: 0
   },
   {
     id: 20,
@@ -257,8 +276,9 @@ const products = [
     img: "https://image.ibb.co/eZiSmk/img7.jpg",
     inCart: false,
     category: "clothes",
-    color:'grey',
-    size:'S'
+    color: 'grey',
+    size: 'S',
+    count: 0
   },
   {
     id: 21,
@@ -270,8 +290,9 @@ const products = [
     img: "http://media.istockphoto.com/photos/young-man-looks-to-the-side-picture-id184616842?k=6&m=184616842&s=612x612&w=0&h=SmtsffRByKDH4_HtzGY8bWvHgH8o_4epWVPogvfJXnk=",
     inCart: false,
     category: "clothes",
-    color:'brown',
-    size:'L'
+    color: 'brown',
+    size: 'L',
+    count: 0
   },
   {
     id: 22,
@@ -283,8 +304,9 @@ const products = [
     img: "https://image.ibb.co/dVfORk/img4.jpg",
     inCart: false,
     category: "clothes",
-    color:'light brown',
-    size:'XXL'
+    color: 'light brown',
+    size: 'XXL',
+    count: 0
   },
   {
     id: 23,
@@ -296,8 +318,9 @@ const products = [
     img: "https://image.ibb.co/jpMxmk/img5.jpg",
     inCart: false,
     category: "clothes",
-    color:'light brown',
-    size:'S'
+    color: 'light brown',
+    size: 'S',
+    count: 0
   },
   {
     id: 24,
@@ -309,8 +332,9 @@ const products = [
     img: "https://image.ibb.co/mJppz5/img6.jpg",
     inCart: false,
     category: "clothes",
-    color:'red',
-    size:'M'
+    color: 'red',
+    size: 'M',
+    count: 0
   },
   {
     id: 25,
@@ -322,8 +346,9 @@ const products = [
     img: "https://image.ibb.co/eZiSmk/img7.jpg",
     inCart: false,
     category: "clothes",
-    color:'grey',
-    size:'M'
+    color: 'grey',
+    size: 'M',
+    count: 0
   },
 ];
 

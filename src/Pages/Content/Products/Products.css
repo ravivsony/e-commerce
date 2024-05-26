@@ -1,4 +1,3 @@
-
 .item {
   height: 31.5em;
   width: 20em;
@@ -47,6 +46,7 @@ img {
   font-weight: lighter;
   margin: 0;
 }
+
 #product-size {
   padding-top: 4px;
   font-size: 0.9em;
@@ -85,6 +85,7 @@ i:hover {
   color: rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
 }
+
 #add-icon:hover {
   text-decoration: none;
 
@@ -94,23 +95,24 @@ i:hover {
   transition: 0.3s;
 }
 
-.addBtn{
+.addBtn {
   margin-left: auto;
-    padding: 6px;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 600;
-    font-family: 'Lato', sans-serif;
-    letter-spacing: .00875rem;
-    cursor: pointer;
-    text-align: center;
-    min-width: 70px;
-    display: inline-block;
-    border: 1px solid #e73c33;
-    color: #e73c33;
-    border-radius: 0.1875rem;
+  padding: 6px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: .00875rem;
+  cursor: pointer;
+  text-align: center;
+  min-width: 70px;
+  display: inline-block;
+  border: 1px solid #e73c33;
+  color: #e73c33;
+  border-radius: 0.1875rem;
 }
-.counter{
+
+.counter {
   width: 70px;
   height: 30px;
   display: flex;
@@ -120,15 +122,29 @@ i:hover {
   border: 0.75px solid #e73c33;
   padding: 6px;
 }
-.minus{
-  width: 13px;
-  padding-top: 3px;
+
+.minus {
+  font-weight: bolder;
+  color: #e73c33;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  user-select: none;
 }
-.plus{
-  width: 13px;
-  padding-top: 3px;
+
+.plus {
+  font-weight: bolder;
+  color: #e73c33;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  user-select: none;
+
 }
-.count{
+
+.count {
   color: #e73c33;
   margin: 0 0.5rem;
   display: flex;
@@ -141,5 +157,22 @@ i:hover {
   letter-spacing: .14px;
   letter-spacing: .00875rem;
   cursor: pointer;
+  text-align: center;
+}
+
+.mens-title {
+  margin: 3em 0;
+  font-family: "Lato", sans-serif;
+  font-weight: lighter;
+  color: rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  text-align: center;
+}
+.womens-title {
+  margin: 3em 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: lighter;
+  color: rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
   text-align: center;
 }
