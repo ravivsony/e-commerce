@@ -23,18 +23,19 @@ const CartItem = ({ product }) => {
                     <h5 id="cartItem-size">Size: {product.size}</h5>
                 </div>
                 <div className="lastSection">
-                    <div style={{ margin: '0.5em 0.75rem', textAlign: 'end' }} onClick={() => removeItem(product.id)}>
+                    <div style={{ marginTop: '0.5em', textAlign: 'end' }} onClick={() => removeItem(product.id)}>
                         <FaTrashAlt className='trash' />
                     </div>
-                    <div className="cartPrice-add">
+                    <div >
                         <div className="cartCounter" >
                             <div className='cartMinus' onClick={() => decrement(product)}>-</div>
                             {cart.map((item) => (product.id === item.id && <span className='count'>{item.count}</span>))}
                             <div className='cartPlus' onClick={() => increment(product)}>+</div>
                         </div>
-                        <h5 id="cartItem-price">&#x20B9;{product.price}</h5>
-
                     </div>
+                    <div id="cartItem-price">
+                            <span>&#x20B9;{product.price}</span>
+                        </div>
                 </div>
 
             </div>

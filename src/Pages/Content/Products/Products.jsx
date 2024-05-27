@@ -9,11 +9,11 @@ const Products = memo(({ gender }) => {
     const existingProduct = cart.find(item => item.id === product.id);
     if (existingProduct) {
       const updatedCart = cart.map(item =>
-        item.id === product.id ? { ...item, count: item.count + 1 } : item
+        item.id === product.id ? { ...item, count: item.count + 1, unitPrice: product.price } : item
       );
       setCart(updatedCart);
     } else {
-      setCart([...cart, { ...product, count: 1 }]);
+      setCart([...cart, { ...product, count: 1, unitPrice: product.price }]);
     }
   };
   return (

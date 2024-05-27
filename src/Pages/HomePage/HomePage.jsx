@@ -86,27 +86,38 @@ const HomePage = memo(() => {
     setSelectedFilter('');
   }
   const increment = (product) => {
-    const index = cart?.findIndex(item => item.id === product.id);
-    if (index === -1) {
-      setCart([{ ...product, count: 1 }])
-    } else {
-      cart[index].count += 1;
-      setCart([...cart])
-    }
-  }
+      setCart(prevCart => {
+          return prevCart.map(item =>{
+            if(item.id === product.id){
+              return { ...item, count: item.count + 1, price: item.unitPrice * (item.count + 1) }
+            } else {
+              return item
+            }})
+      });
+
+  };
+  
+  
 
   const decrement = (product) => {
-    const existingProduct = cart.find(item => item.id === product.id);
-    if (existingProduct) {
-      if (existingProduct.count > 1) {
-        const updatedCart = cart.map(item =>
-          item.id === product.id ? { ...item, count: item.count - 1 } : item
-        );
-        setCart(updatedCart);
-      } else {
-        setCart(cart.filter(item => item.id !== product.id));
+    setCart(prevCart => {
+      const existingProduct = prevCart.find(item => item.id === product.id);
+  
+      if (existingProduct) {
+        if (existingProduct.count > 1) {
+          const unitPrice = existingProduct.unitPrice
+          return prevCart.map(item =>
+            item.id === product.id
+              ? { ...item, count: item.count - 1, price: unitPrice * (item.count - 1) }
+              : item
+          );
+        } else {
+          return prevCart.filter(item => item.id !== product.id);
+        }
       }
-    }
+  
+      return prevCart;
+    });
   };
 
   return (
