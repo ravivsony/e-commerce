@@ -23,7 +23,7 @@ const CartItem = ({ product }) => {
                     <h5 id="cartItem-size">Size: {product.size}</h5>
                 </div>
                 <div className="lastSection">
-                    <div style={{ marginTop: '0.5em', textAlign: 'end' }} onClick={() => removeItem(product.id)}>
+                    <div className='deleteIcon'  onClick={() => removeItem(product.id)}>
                         <FaTrashAlt className='trash' />
                     </div>
                     <div >

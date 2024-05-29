@@ -4,6 +4,7 @@ import Products from "./Products/Products";
 import Cart from "./Cart/Cart";
 import Men from "./Men/Men";
 import Women from "./Women/Women";
+// import Checkout from './Checkout/Checkout'
 
 const Content = memo(() => {
 
@@ -13,6 +14,7 @@ const Content = memo(() => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/women" element={<Women />} />
             <Route path="/men" element={<Men />} />
+            {/* <Route path="/cart/checkout" element={<Checkout />} /> */}
         </Routes>
 
     )

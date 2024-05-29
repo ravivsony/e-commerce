@@ -23,8 +23,44 @@ const Header = ({ cart }) => {
     }, [index]);
     return (
         <>
-            {
-                location.pathname !== "/cart" ? <div className={className}>
+            {(location.pathname !== "/cart" && location.pathname !== "/cart/checkout") ? <div className={className}>
+                <nav className="navbar">
+                    <div className="nav-links">
+                        <ul>
+                            <li>
+                                <Link activeClassName="selected" className="nav-link" exact to="/">
+                                    Home
+                                </Link>
+                            </li>
+                            <li>
+                                <Link activeClassName="selected" className="nav-link" to="/women">
+                                    Women
+                                </Link>
+                            </li>
+                            <li>
+                                <Link activeClassName="selected" className="nav-link" to="/men">
+                                    Men
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <Link to="/cart">
+                        {cart?.length ?
+                            <div className='viewCart'>
+                                <FaShoppingCart style={{ color: 'black' }} className='cartIcon' />
+                                <span id="badge">{cart?.reduce((acc, curVal) => acc + curVal.count, 0)}</span>
+                            </div> :
+                            <div style={{ position: 'relative' }}>
+                                <FaShoppingCart className='cartIcon' />
+                            </div>
+                        }
+                    </Link>
+                </nav>
+                <div className="header">
+                    <h1 id="header-title">Shop Now</h1>
+                </div>
+            </div> :
+                <div >
                     <nav className="navbar">
                         <div className="nav-links">
                             <ul>
@@ -57,44 +93,7 @@ const Header = ({ cart }) => {
                             }
                         </Link>
                     </nav>
-                    <div className="header">
-                        <h1 id="header-title">Shop Now</h1>
-                    </div>
-                </div> :
-                    <div >
-                        <nav className="navbar">
-                            <div className="nav-links">
-                                <ul>
-                                    <li>
-                                        <Link activeClassName="selected" className="nav-link" exact to="/">
-                                            Home
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link activeClassName="selected" className="nav-link" to="/women">
-                                            Women
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link activeClassName="selected" className="nav-link" to="/men">
-                                            Men
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
-                            <Link to="/cart">
-                                {cart?.length ?
-                                    <div className='viewCart'>
-                                        <FaShoppingCart style={{ color: 'black' }} className='cartIcon' />
-                                        <span id="badge">{cart?.reduce((acc, curVal) => acc + curVal.count, 0)}</span>
-                                    </div> :
-                                    <div style={{ position: 'relative' }}>
-                                        <FaShoppingCart className='cartIcon' />
-                                    </div>
-                                }
-                            </Link>
-                        </nav>
-                    </div>
+                </div>
 
             }
         </>
